@@ -21,12 +21,10 @@ def trytoguess():
         guess = input('Дополните это словосочетание: ')
         for i in range(len(puzzle[key])):
             if guess == key:
-                print("Вы угадали!!!")
+                print("Вы угадали!!! Это" , '"' + puzzle[key] , key + '".')
                 break
-            print('Вы не угадали.')
-            if i != len(puzzle[key]) - 1:
-                guess = input('Попробуйте еще раз: ')
-        print('Игра окончена.')
-        break
-
+            guess = input('Вы не угадали, попробуйте еще раз: ')
+        if i == len(puzzle[key]) - 1:
+            print('Вы проиграли.')
+        
 trytoguess()
