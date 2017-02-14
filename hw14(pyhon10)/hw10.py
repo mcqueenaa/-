@@ -13,20 +13,20 @@ def finddata(fname):
         profreg = 'Преподаватели(.|\n)*?<p>(.+?)<'
         if re.search(profreg, card):
             number = re.search(profreg, card).group(2)
-            with open ('data.txt', 'a', encoding = 'utf-8') as t:
+            with open ('data.txt', 'w', encoding = 'utf-8') as t:
                 t.write(number)
         else:
             print('Информации о преподавателях нет')
-            with open ('data.txt', 'a', encoding = 'utf-8') as t:
+            with open ('data.txt', 'w', encoding = 'utf-8') as t:
                 t.write('Информации о преподавателях нет')
     else:
         print('В данной статье нет карточки')
-        with open ('data.txt', 'a', encoding = 'utf-8') as t:
-                t.write('В данной статье нет карточки')
+        with open ('data.txt', 'w', encoding = 'utf-8') as t:
+                t.write('В данной статье нет инфобокса')
 
 def main():
-    opentext('HSE.html')
-    finddata('HSE.html')
+    text = input('Введите название файла: ')
+    finddata(text)
     
 if __name__ == '__main__':
     main()
