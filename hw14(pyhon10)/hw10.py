@@ -20,7 +20,7 @@ def finddata(fname):
             with open ('data.txt', 'w', encoding = 'utf-8') as t:
                 t.write('Информации о преподавателях нет')
     else:
-        print('В данной статье нет карточки')
+        print('В данной статье нет инфобокса')
         with open ('data.txt', 'w', encoding = 'utf-8') as t:
                 t.write('В данной статье нет инфобокса')
 
