@@ -7,24 +7,22 @@ def opentext(text):
         newtext = t.read()
     newtext = re.sub('\n', ' ', newtext)
     sentences = re.split('\?|!|\?!|\.\.\.|\.|…', newtext)
-    for i in range(len(sentences)):
-        sentences[i] = re.sub('[”“"–«»:;(),]', ' ', sentences[i])
+    sentences = [re.sub('[”“"–«»:;(),]', '', i) for i in sentences]
     return sentences
 
-def makewords(text):
+def makewordlen(text):
     sentences = opentext(text)
-    words = [i for s in sentences for i in s.split()]
-    return words
+    wordlen = [[i, len(i)] for s in sentences for i in s.split()]
+    return wordlen
 
-def numb(text):
-    word = makewords(text)
-    wordlen = [[w, len(w)] for w in word]
+def form(text):
+    wordlen = makewordlen(text)
     template = '{}_{}'
     for w in range(len(wordlen)):
         print(template.format(wordlen[w][0], wordlen[w][1]))
 
 def main():
-    numb('телеграмма.txt')
+    form('телеграмма.txt')
     
 if __name__ == '__main__':
     main()
